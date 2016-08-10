@@ -552,6 +552,7 @@ logfile("restfill.log" , "insertNCUT_Phone  UPDATE $r  \n".$query ."\n" ) ; //
 /**
   my API test function 
   http://localhost:8000/services/api.php?x=test
+  for mysqli connect debug 
 */ 
 		public	function test(){ 	 
 
