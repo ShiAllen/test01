@@ -35,7 +35,14 @@ myApp.factory('AuthService',
             },
             login:function (name, password) {
                 currentUser = name;
-                authorized = true;
+                
+                if(name == "admin" && password == "admin") {
+                    authorized = true;
+                }else {
+                    authorized = false;
+                }
+
+                
                 //console.log("Logged in as " + name);
                 initialState = false;
             },
