@@ -1,0 +1,13 @@
+{
+    "name": "allenshi/test01",
+    "description": "my Test001 2016 08 10",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Allen Shi",
+            "email": "allenshi@ncut.edu.tw"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
