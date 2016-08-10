@@ -1,3 +1,15 @@
+Todo 
+        add item
+        auth login 
+        LDAP login
+        SSO login
+        
+
+Bug
+watch  update item   phone table reDraw
+
+
+
 add SQL PHONE
 
 MYSQL root  root
@@ -29,4 +41,5 @@ services.js
 
 ng-show="adminauth"
 
-ng-show="authService.isLoggedIn()"            
+ng-show="authService.isLoggedIn()"        
+
