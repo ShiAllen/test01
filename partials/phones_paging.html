@@ -1,0 +1,141 @@
+
+<div class="row">
+  <div class="col-md-12"><h3>分機表 2016 06 14</h3>  </div>
+  <div class="col-md-12" ng-show="phones.length > 0">
+
+    <nav class= "navbar navbar-default" role= "navigation" >
+      
+      <div class= "navbar-header"  ng-show="adminauth">
+          <a class="btn btn-lg btn-success" href="#/edit-phone/0"><i class="glyphicon glyphicon-plus"></i>&nbsp; 新增Add</a>
+     </div> 
+
+   </nav>
+       <div class="col-md-3">搜尋:
+           <input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" />
+       </div>
+
+       <div class="col-md-4">
+            <h5> Items{{filteredItems}} :  filtered{{ filtered.length }} / {{ totalItems}} 筆    {{ mymessage }} </h5>
+        </div>
+
+      <div class="col-md-2" >查詢各級單位:
+            <select ng-model="searchDeptname" class="form-control" ng-change="seekdeptment()">
+                <option ng-repeat="data in deptnames" >{{data.deptname}}</option>
+            </select>
+     </div> 
+       
+     <div class="col-md-2">  分頁筆數:
+            <select ng-model="entryLimit" class="form-control">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+     </div>      
+       
+     <!-- div class="col-md-8"> 
+
+       <a href=""  ng-click="search='秘書室'" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>秘書室&nbsp;</a>
+        <a href=""  ng-click="search='校長室'" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>校長室&nbsp;</a>
+
+<a href=""  ng-click="search='學生事務處'" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>學生事務處&nbsp;</a>
+        <a href=""  ng-click="search='教務處'" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>教務處&nbsp;</a>
+          <a href=""  ng-click="search='總務處'" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>總務處&nbsp;</a>
+            <a href=""  ng-click="search='研發處'" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>研發處&nbsp;</a>
+</div>   -->    
+
+        <table class="table table-striped table-bordered">
+            <thead>
+
+<th>分機&nbsp;</th>
+<th>姓名&nbsp;</th>
+<th>職稱&nbsp;</th>
+<th>單位名稱&nbsp;</th>
+<th ng-show="adminauth">操作&nbsp;</th>
+            </thead>
+            <tbody>
+   <tr ng-repeat="data in filtered = ( phones | filter:search | orderBy : predicate :reverse  ) | startFrom:(currentPage-1)*entryLimit   | limitTo:entryLimit ">   
+
+                  <td>{{data.phone}}</td>                     
+                    <td>{{data.name}}</td>
+                    <td>{{data.title}}</td>
+                    <td>{{data.deptname}}</td>
+                    
+                    <td ng-show="adminauth"><a href="#/edit-phone/{{data.pid}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Phone</a></td>
+                </tr>
+            </tbody>
+        </table>
+  </div>
+
+  <div class="col-md-12" ng-show="filtered.length == 0">
+        <div class="col-md-12">
+            <h4>沒有找到任何資料No Phone found</h4>
+        </div>
+  </div>
+<!--  
+   pages.length || !autoHide
+    ng-class="{ disabled : pagination.current == 1 }"
+    ng-if="boundaryLinks"
+      ng-click="setCurrent(1)">&laquo;  第一頁
+      ng-click="setCurrent(pagination.current - 1)">&lsaquo; 上一頁 </a>
+      ng-click="setCurrent(pagination.current + 1)"> 下一頁 &rsaquo;</a>
+         
+重複頁 
+ <li ng-repeat="
+  pageNumber in pages     track by tracker(pageNumber, $index)"
+          ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
+
+        <a href="" ng-click="setCurrent( pageNumberID )">{{ myTitlePageNumber }}</a>
+    </li>         
+ 
+myPagination.current
+myPagination.last
+      ng-click="setCurrent(myPagination.last)">&raquo; 最後一頁
+| limitTo: pagelimits
+ ng-repeat= pageNumber in pages     track by tracker(pageNumber, $index)
+-->
+<!-- <div class="col-md-12" ng-show="filteredItems > 0" > 
+
+<ul class="pagination" ng-if="1 < pages.length || !autoHide">
+    <li ng-if="boundaryLinks" ng-class="{ disabled : myPagination.current == 1 }">
+        <a href="" ng-click="setPage(1)">&laquo;</a>
+    </li>
+
+    <li ng-if="directionLinks" ng-class="{ disabled : myPagination.current == 1 }">
+        <a href="" ng-click="setPage(myPagination.current - 1)">&lsaquo;</a>
+    </li>
+
+    <li ng-repeat="page in pages "
+     ng-class="{ active : myPagination.current == page.id ,    disabled : page.id == '...' }">
+        <a  ng-show="ispage({{ page.id }})"  href="" ng-click="setPage(page.id)">{{ page.id }}</a>
+    </li>
+
+    <li ng-if="directionLinks" ng-class="{ disabled : myPagination.current == myPagination.last }">
+        <a href="" ng-click="setPage(myPagination.current + 1)">&rsaquo;</a>
+    </li>
+    
+    <li ng-if="boundaryLinks"  ng-class="{ disabled : myPagination.current == myPagination.last }">
+        <a href="" ng-click="setPage(myPagination.last)">&raquo;</a>
+    </li>
+</ul>
+</div> -->
+<!-- <div class="col-md-12" ng-show="filteredItems > 0" > 
+  <p ng-repeat="page in pages"> id= {{page.id}}   </p> 
+</div > -->
+
+ <div class="col-md-12"   > 
+
+<ul class="pagination"  >
+    <li ng-show="ispage(0)" ><a href="" ng-click="setPage(1)">&laquo;</a></li>
+
+ <li ng-repeat="page in pages" ng-show="ispage(page.id)">
+    <a href="" ng-click="setPage( page.id )">{{page.id}}</a>
+ </li>
+
+    <li ng-show="ispage(-1)"><a href="" ng-click="setPage(totalpage)" >&raquo;</a></li>
+</ul>   
+       
+ </div>
+ 
+</div>

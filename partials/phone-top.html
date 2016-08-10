@@ -1,0 +1,121 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">NCUT勤益科大</a>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+    </div>
+
+
+    <div id="top-nav" class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-gift glyphicon-white"></i>
+                    分機表
+                    <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                   <!-- <li><a href="#/playground/accordion">Accordion</a></li>  BROKE WITH Bootstrap 3 Upgrade -->
+                    <li><a href="#/phones">分機表</a></li>
+                    <li><a href="#/help">說明</a></li>
+                    <li><a href="#/download">下載</a></li>
+                    <li>
+<a href="#allenModal" data-toggle="modal">
+                    登入</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+
+
+        <div class="nav navbar-form pull-right">
+            <div ng-show="!authService.isLoggedIn()">
+                <a href="#allenModal" role="button" class="btn btn-primary" data-toggle="modal">
+                    <i class="glyphicon glyphicon-user glyphicon-white"></i>test</a>
+
+                <a href="#loginModal" role="button" class="btn btn-primary" data-toggle="modal">
+                    <i class="glyphicon glyphicon-user glyphicon-white"></i>登入</a>
+            </div>
+            <div ng-show="authService.isLoggedIn()">
+                <a class="btn btn-primary" ng-click="authService.logout()">
+                    <i class="glyphicon glyphicon-off glyphicon-white"></i>登出</a>
+            </div>
+        </div>
+
+        <div ng-show="authService.isLoggedIn()">
+            <ul class="nav navbar-nav pull-right">
+
+                <li ng-show="authService.isLoggedIn()" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-user glyphicon-white"></i>
+
+                        <b class="caret"></b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#/">User Profile</a></li>
+                        <li><a href="#/">Change password</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="modal" id="loginModal" fade-in>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">登入</h4>
+            </div>
+            <div class="modal-body">
+                <span id="login-email">教職員編號</span>
+                <input ng-model="loginInput" type="text" placeholder="教職員編號" name='username'>
+                <span id="login-password">Password</span>
+                <a href="#">Forgot password?</a>
+                <input ng-model="passwordInput" type="password" placeholder="Password" name='password'>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" data-dismiss="modal" ng-click="authService.login(loginInput, passwordInput)">
+                    <i
+                            class="glyphicon glyphicon-user glyphicon-white"></i>Log in</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="allenModal" fade-in>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">對話視窗</h4>
+            </div>
+            <div class="modal-body">
+                <span id="testField01">教職員編號</span>
+                <input ng-model="f01Input" type="text" placeholder="教職員編號" name='fieldname01'>
+                <span id="testField02">測試欄位</span>
+                <a href="#"> xxxxxxxx ?</a>
+                <input ng-model="f02Input" type="text" placeholder="測試欄位" name='fieldname02'>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" data-dismiss="modal" ng-click="authService.login(f01Input, f02Input)">
+                    <i
+                            class="glyphicon glyphicon-user glyphicon-white"></i>Log in</a>
+            </div>
+        </div>
+    </div>
+</div>

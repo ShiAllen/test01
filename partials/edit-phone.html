@@ -1,0 +1,90 @@
+﻿<!--
+
+-- 編號 pid 
+-- 名稱 name
+-- 單位名稱 deptname
+-- 分機 phone
+-- 職稱 title 
+-- 備註 mynote 
+
+-->
+<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="view">
+    <div class="container">
+        <div class="row">
+        <nav class= "navbar navbar-default" role= "navigation" >
+        <div class= "navbar-header" >
+        <a class= "navbar-brand" href= "#/customers"><i class="glyphicon glyphicon-th-large"></i> phones List </a>
+        <a ng-show="phones.pid" class= "navbar-brand" href= "#/edit-phone/0"><i class="glyphicon glyphicon-plus"></i> Create phones </a>
+        <a ng-show="customer._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing Customer Number: {{myphones.pid}}</a>
+        </div>
+        </nav>
+        <header>
+            <h3>{{title}}</h3>
+        </header>
+        <div class="col-md-12">
+
+<form role="form" name="myForm" class="form-horizontal">
+
+<div class="row">
+
+
+<!--  編號 pid  名稱 name  單位名稱 deptname  分機 phone  職稱 title  備註 mynote  -->
+
+<div class= "form-group" ng-class="{error: myForm.name.$invalid}">
+    <label class= "col-md-2"> 名稱 </label>
+    <div class="col-md-4">
+    <input name="name" ng-model="myphones.name" type= "text" class= "form-control" placeholder="Your name" required/>
+    <span ng-show="myForm.name.$dirty" class="help-inline">名稱 必要欄位</span>
+    </div>
+</div>
+<div class= "form-group">
+    <label class= "col-md-2"> 分機</label>
+    <div class="col-md-4">
+    <input name="phone" ng-model="myphones.phone" type= "text" class= "form-control" placeholder="請輸入 分機號碼" required/>
+    <span ng-show="myForm.phone.$dirty && myForm.phone.$invalid"   class="help-inline">分機 必要欄位</span>
+    </div>
+</div>
+<div class= "form-group">
+    <label class= "col-md-2">單位名稱 </label>
+    <div class="col-md-4">
+    <input ng-model="myphones.deptname" type= "text" class= "form-control" placeholder= "請輸入 單位名稱"/>
+    </div>
+</div>
+<div class= "form-group">
+    <label class= "col-md-2">職稱 </label>
+    <div class="col-md-4">
+    <input ng-model="myphones.title" type= "text" class= "form-control" placeholder= "請輸入 職稱"/>
+    </div>
+</div>
+<div class= "form-group">
+    <label class= "col-md-2">備註 </label>
+    <div class="col-md-4">
+    <input ng-model="myphones.mynote" type= "text" class= "form-control" placeholder= "請輸入 上級單位"/>
+    </div>
+</div>
+<div class= "form-group">
+    <label class= "col-md-2"></label>
+    <div class="col-md-4">
+    <a href="#/" class="btn">取消Cancel</a>
+        <button ng-click="savePhone(myphones);" 
+                ng-disabled="isClean() || myForm.$invalid"
+                class="btn btn-primary">{{buttonText}}</button>
+        <button ng-click="deletePhone(myphones)"
+                ng-show="myphones.pid" class="btn btn-warning">刪除Delete</button>
+    </div>
+</div>
+</div>
+</form>
+ <li><a href="#allenModal" data-toggle="modal">                  對話test</a></li>
+        </div></div>
+    </div>
+</div>
