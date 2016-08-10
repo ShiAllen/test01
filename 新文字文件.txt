@@ -1,0 +1,32 @@
+add SQL PHONE
+
+MYSQL root  root
+
+login
+admin admin
+
+
+phone-top.html
+
+   authService.login(loginInput, passwordInput)
+
+services.js
+
+    login:function (name, password) {
+                currentUser = name;
+                
+                if(name == "admin" && password == "admin") {
+                    authorized = true;
+                }else {
+                    authorized = false;
+                }
+
+                
+                //console.log("Logged in as " + name);
+                initialState = false;
+            },
+
+
+ng-show="adminauth"
+
+ng-show="authService.isLoggedIn()"            

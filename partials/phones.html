@@ -36,7 +36,7 @@
 <th>姓名&nbsp;</th>
 <th>職稱&nbsp;</th>
 <th>單位名稱&nbsp;</th>
-<th ng-show="adminauth">操作&nbsp;</th>
+<th  ng-show="authService.isLoggedIn()" >操作&nbsp;</th>
             </thead>
             <tbody>
    <tr ng-repeat="data in filtered = ( phones | filter:search | orderBy : predicate :reverse  ) ">   
@@ -46,7 +46,7 @@
                     <td>{{data.title}}</td>
                     <td>{{data.deptname}}</td>
                     
-                    <td ng-show="adminauth"><a href="#/edit-phone/{{data.pid}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Phone</a></td>
+                    <td  ng-show="authService.isLoggedIn()" ><a href="#/edit-phone/{{data.pid}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Phone</a></td>
                 </tr>
             </tbody>
         </table>
