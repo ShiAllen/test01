@@ -1,7 +1,6 @@
 CREATE DATABASE IF NOT EXISTS ncut;
  
 USE ncut;
-
 --
 -- Table structure for table `customers`
 --
@@ -18,16 +17,16 @@ PRIMARY KEY ( `pid` )
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = 'phones';
 
 -- {phone:2100 , name:"校長 趙敏勳" , deptname:"校長室", title:"校長" ,mynote:""},
-
 -- 編號 pid 
 -- 名稱 name
 -- 單位名稱 deptname
 -- 分機 phone
-//-- email email
+-- email email
 -- 職稱 title 
 -- 備註 mynote 
 
  CREATE TABLE `ncut`.`phones` ( `pid` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR( 32 ) DEFAULT NULL, `deptname` VARCHAR( 128 ) DEFAULT NULL, `phone` VARCHAR( 12 ) NOT NULL , `title` VARCHAR( 128 ) NOT NULL , `mynote` VARCHAR( 256 ) DEFAULT NULL, PRIMARY KEY ( `pid` ) ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = 'phones'
+
 
 
 --
